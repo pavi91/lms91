@@ -1,16 +1,49 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .content-wrapper {
-    display: flex;
-    flex: 1;
-  }
-  
-  .main-content {
-    flex: 1;
-    padding: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  transition: margin-left 0.3s ease; /* Transition for smooth sliding */
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 160px; /* Initial width of the sidebar */
+  z-index: 2;
+  transition: width 0.3s ease; /* Transition for smooth sliding */
+}
+
+.sidebar.minimized {
+  width: 40px; /* Width when minimized */
+}
+
+.headbar {
+  z-index: 1;
+  width: 100%;
+}
+
+.footer {
+  z-index: 1;
+  width: 100%;
+}
+
+.content-wrapper.minimized .main-content {
+  margin-left: 40px; /* Adjust based on minimized sidebar width */
+}
+
+.content-wrapper:not(.minimized) .main-content {
+  margin-left: 160px; /* Adjust based on initial sidebar width */
+}

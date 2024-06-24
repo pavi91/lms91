@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SidebarItem from './SidebarItem';
-import { faChartBar, faBook, faMoneyBillAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartBar, faBook, faMoneyBillAlt, faUser, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 
-const Sidebar = () => {
-  const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
-
-  const toggleSidebarMinimized = () => {
-    setIsSidebarMinimized(!isSidebarMinimized);
-  };
-
+const Sidebar = ({ isSidebarMinimized, toggleSidebarMinimized, onViewChange }) => {
   const sidebarItems = [
     { icon: faChartBar, label: 'Dashboard', link: '/dashboard' },
     {
@@ -19,14 +14,21 @@ const Sidebar = () => {
       submenu: [
         { label: 'All Students', link: '/all-students' },
         { label: 'Add new', link: '/add-new' },
-        { label: 'Update Student', link: '/update-student' },
+        {
+          label: 'Update Student',
+          link: '#update-student',
+          onClick: () => onViewChange('update-student') // Call onViewChange when clicked
+        },
         { label: 'De-Registration', link: '/de-registration' },
         { label: 'Extension', link: '/extension' },
       ],
     },
-    { icon: faMoneyBillAlt, label: 'Payment', link: '/payment', 
+    {
+      icon: faMoneyBillAlt,
+      label: 'Payment',
+      link: '/payment',
       submenu: [
-        {label: 'Payment History', link: '/paymenthistory'},
+        { label: 'Payment History', link: '/paymenthistory' },
       ],
     },
     { icon: faBook, label: 'Sample', link: '/sample' },
@@ -39,7 +41,7 @@ const Sidebar = () => {
           <img src="Uni_emblem.jpg" alt="LearnOrg" />
         </div>
         <button className="menu-button" onClick={toggleSidebarMinimized}>
-          Menu
+          <FontAwesomeIcon icon={faWindowMaximize} />
         </button>
       </div>
       <nav>
@@ -52,6 +54,13 @@ const Sidebar = () => {
               label={item.label}
               link={item.link}
               submenu={item.submenu}
+              isSidebarMinimized={isSidebarMinimized}
+              toggleSidebarMinimized={toggleSidebarMinimized}
+              onSubItemClick={(link) => {
+                if (link === '#update-student') {
+                  onViewChange('update-student');
+                }
+              }} // Handle subitem clicks
             />
           ))}
           <li className="menu-section">OTHER</li>

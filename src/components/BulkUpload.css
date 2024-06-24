@@ -1,0 +1,80 @@
+.upload-container {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.download-section {
+  margin-bottom: 20px;
+}
+
+.download-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.download-button .download-icon {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.upload-instruction {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.upload-section {
+  margin-top: 20px;
+}
+
+.upload-box {
+  width: 100%;
+  height: 100px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.upload-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.start-upload, .cancel {
+  width: 45%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.start-upload {
+  background-color: #000;
+  color: #fff;
+}
+
+.cancel {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
